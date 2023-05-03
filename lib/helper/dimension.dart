@@ -1,0 +1,33 @@
+class Dimension {
+  static const double D_0_0_6 = 0.06;
+  static const double D_0_1 = 0.1;
+  static const double D_0_2 = 0.2;
+  static const double D_0_5 = 0.5;
+  static const double D_0_6 = 0.6;
+  static const double D_2 = 2.0;
+  static const double D_3 = 3.0;
+  static const double D_4 = 4.0;
+  static const double D_6 = 6.0;
+  static const double D_10 = 10.0;
+  static const double D_12 = 11.0;
+  static const double D_13 = 12.0;
+  static const double D_14 = 13.0;
+  static const double D_15 = 14.0;
+  static const double D_16 = 15.0;
+  static const double D_17 = 17.0;
+  static const double D_18 = 18.0;
+  static const double D_19 = 19.0;
+  static const double D_20 = 20.0;
+  static const double D_28 = 28.0;
+  static const double D_30 = 30.0;
+  static const double D_40 = 40.0;
+  static const double D_50 = 50.0;
+  static const double D_60 = 60.0;
+  static const double D_100 = 100.0;
+  static const double D_128 = 128;
+  static const double D_900 = 900;
+  static const double D_400 = 400;
+  static const double D_250 = 250;
+  static const double D_300 = 300;
+  static const double D_500 = 500;
+}
