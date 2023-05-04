@@ -1,8 +1,9 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:task_4_side_navigation_media_fetching/Views/audio.dart';
+import 'package:task_4_side_navigation_media_fetching/Views/video.dart';
 import 'package:task_4_side_navigation_media_fetching/custom_widgets/drawer.dart';
 import 'package:task_4_side_navigation_media_fetching/helper/constat_resources.dart';
 import 'package:task_4_side_navigation_media_fetching/helper/dimension.dart';
@@ -70,13 +71,18 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ).centerwidget;
             }
+            if (state is LoadingMusicState) {
+              return MusicPlayer();
+            }
+            if (state is LoadingVideoState) {
+              return VideoScreen();
+            }
             if (state is ImageGetState) {
               aaa = state.images;
             }
             return SizedBox(
               height: Dimension.D_300,
               width: Dimension.D_300,
-              //color: Colors.amber,
               child: Image.file(
                 File(aaa),
                 fit: BoxFit.fill,
@@ -88,7 +94,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void _handleMenuButtonPressed() {
+  _handleMenuButtonPressed() {
     _advancedDrawerController.showDrawer();
   }
 }

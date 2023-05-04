@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_4_side_navigation_media_fetching/helper/constat_resources.dart';
 import 'package:task_4_side_navigation_media_fetching/helper/dimension.dart';
 import 'package:task_4_side_navigation_media_fetching/helper/string_resources.dart';
+import 'package:task_4_side_navigation_media_fetching/helper/widget_extension.dart';
 
 import '../AudioBloc/bloc/music_bloc.dart';
 
@@ -75,28 +76,45 @@ class _MusicPlayerState extends State<MusicPlayer> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    '0.0',
+                    '',
                     style: TextStyle(color: Colors.white),
                   ),
                   SizedBox(
                     width: Dimension.D_250,
-                    child: Slider.adaptive(
-                      onChangeEnd: (newValue) async {},
-                      min: 0.0,
-                      //   value: value,
-                      //max: 214.0,
-                      onChanged: (value) {},
-                      activeColor: Colors.white,
-                      value: 0,
+                    child: BlocBuilder<MusicBloc, MusicState>(
+                      builder: (context, state) {
+                        if (state is Musicplayed) {
+                          return Slider.adaptive(
+                            onChanged: (value) {
+                              var seekPosition =
+                                  Duration(seconds: value.toInt());
+                              BlocProvider.of<MusicBloc>(context)
+                                  .add(SeekPositionChanged(seekPosition));
+                            },
+                            onChangeEnd: (newValue) async {
+                              var seekPosition =
+                                  Duration(seconds: newValue.toInt());
+                              BlocProvider.of<MusicBloc>(context)
+                                  .add(ApplySeekPosition(seekPosition));
+                            },
+                            value: state.position.inSeconds.toDouble(),
+                            min: 0,
+                            max: state.duration.inSeconds.toDouble(),
+                            activeColor: Colors.white,
+                          );
+                        }
+
+                        return Text('');
+                      },
                     ),
                   ),
                   Text(
-                    '1.0',
+                    '',
                     style: TextStyle(color: Colors.white),
                   ),
                 ],
               ),
-              //setting the player controller
+
               SizedBox(
                 height: Dimension.D_60,
               ),
@@ -140,7 +158,7 @@ class _MusicPlayerState extends State<MusicPlayer> {
                             BlocProvider.of<MusicBloc>(context)
                                 .add(LoadEvent());
                           }
-                          if (state is MusicPlayed) {
+                          if (state is Musicplayed) {
                             BlocProvider.of<MusicBloc>(context)
                                 .add(PausedEvent());
                           }
@@ -151,7 +169,7 @@ class _MusicPlayerState extends State<MusicPlayer> {
                         },
                         child: Center(
                           child: Icon(
-                            state is MusicPlayed
+                            state is Musicplayed
                                 ? Icons.pause
                                 : Icons.play_arrow,
                             color: Colors.white,
@@ -171,12 +189,10 @@ class _MusicPlayerState extends State<MusicPlayer> {
                     child: InkWell(
                       onTapDown: (details) {},
                       onTapUp: (details) {},
-                      child: Center(
-                        child: Icon(
-                          Icons.fast_forward_rounded,
-                          color: Colors.white,
-                        ),
-                      ),
+                      child: Icon(
+                        Icons.fast_forward_rounded,
+                        color: Colors.white,
+                      ).centerwidget,
                     ),
                   ),
                 ],

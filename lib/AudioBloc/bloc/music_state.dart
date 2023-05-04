@@ -7,12 +7,12 @@ class Musicloading extends MusicState {}
 
 class MusicLoaded extends MusicState {}
 
-class MusicPlayed extends MusicState {}
-
 class Musicpaused extends MusicState {}
 
-class Musicseek extends MusicState {
-  Duration? duration;
+class Musicplayed extends MusicState {
+  Duration duration;
+  Duration position;
+  Musicplayed(this.duration, this.position);
 }
 
 class Musicerror extends MusicState {
