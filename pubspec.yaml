@@ -44,6 +44,7 @@ dependencies:
   flutter_file_manager:
   chewie: ^1.0.0
   video_player: ^2.6.1
+  camera: ^0.10.5
 
 dev_dependencies:
   flutter_test:

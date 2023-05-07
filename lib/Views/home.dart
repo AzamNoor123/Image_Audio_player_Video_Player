@@ -1,16 +1,14 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:task_4_side_navigation_media_fetching/Bloc/Nvigator/bloc/navigator_bloc.dart';
 import 'package:task_4_side_navigation_media_fetching/Views/audio.dart';
+import 'package:task_4_side_navigation_media_fetching/Views/image.dart';
 import 'package:task_4_side_navigation_media_fetching/Views/video.dart';
 import 'package:task_4_side_navigation_media_fetching/custom_widgets/drawer.dart';
-import 'package:task_4_side_navigation_media_fetching/helper/constat_resources.dart';
+import 'package:task_4_side_navigation_media_fetching/helper/context_extension.dart';
 import 'package:task_4_side_navigation_media_fetching/helper/dimension.dart';
 import 'package:task_4_side_navigation_media_fetching/helper/string_resources.dart';
-import 'package:task_4_side_navigation_media_fetching/helper/widget_extension.dart';
-
-import '../Bloc/ImageBloc/image_bloc_bloc.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -21,7 +19,6 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final _advancedDrawerController = AdvancedDrawerController();
-  String aaa = '';
 
   @override
   Widget build(BuildContext context) {
@@ -38,59 +35,50 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       drawer: CustomDrawer(),
       child: Scaffold(
-        appBar: AppBar(
-          title: const Text(StringResources.TITle_Name),
-          leading: IconButton(
-            onPressed: _handleMenuButtonPressed,
-            icon: ValueListenableBuilder<AdvancedDrawerValue>(
-              valueListenable: _advancedDrawerController,
-              builder: (_, value, __) {
-                return AnimatedSwitcher(
-                  duration: const Duration(milliseconds: 250),
-                  child: Icon(
-                    value.visible ? Icons.clear : Icons.menu,
-                    key: ValueKey<bool>(value.visible),
-                  ),
-                );
-              },
+          appBar: AppBar(
+            title: const Text(StringResources.TITle_Name),
+            leading: IconButton(
+              onPressed: _handleMenuButtonPressed,
+              icon: ValueListenableBuilder<AdvancedDrawerValue>(
+                valueListenable: _advancedDrawerController,
+                builder: (_, value, __) {
+                  return AnimatedSwitcher(
+                    duration: Duration(milliseconds: Dimension.D_250.toInt()),
+                    child: Icon(
+                      value.visible ? Icons.clear : Icons.menu,
+                      key: ValueKey<bool>(value.visible),
+                    ),
+                  );
+                },
+              ),
             ),
           ),
-        ),
-        body: BlocBuilder<ImageBlocBloc, ImageBlocState>(
-          builder: (context, state) {
-            if (state is Loading) {
+          body: BlocBuilder<NavigatorBloc, NavigatorStates>(
+            builder: (context, state) {
+              if (state is LoadingImageNavigatorState) {
+                return ImageScreen();
+              }
+              if (state is LoadingMusicNavigatorState) {
+                return MusicPlayer();
+              }
+              if (state is LoadingVideoNavigatorState) {
+                return VideoScreen();
+              }
               return Column(
                 children: [
-                  Padding(padding: EdgeInsets.only(top: 100)),
+                  SizedBox(
+                    height: context.heightC * Dimension.D_0_1,
+                  ),
                   Text(StringResources.TITle_Description),
                   Image.asset(
-                    ConstResource.HOME_iMAGE,
-                    height: 200,
-                    width: 200,
+                    'assets/video.png',
+                    height: context.heightC * Dimension.D_0_5,
+                    width: context.widthC * Dimension.D_0_5,
                   )
                 ],
-              ).centerwidget;
-            }
-            if (state is LoadingMusicState) {
-              return MusicPlayer();
-            }
-            if (state is LoadingVideoState) {
-              return VideoScreen();
-            }
-            if (state is ImageGetState) {
-              aaa = state.images;
-            }
-            return SizedBox(
-              height: Dimension.D_300,
-              width: Dimension.D_300,
-              child: Image.file(
-                File(aaa),
-                fit: BoxFit.fill,
-              ).centerwidget,
-            );
-          },
-        ),
-      ),
+              );
+            },
+          )),
     );
   }
 

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:bloc/bloc.dart';
+import 'package:camera/camera.dart';
 import 'package:chewie/chewie.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:task_4_side_navigation_media_fetching/Bloc/Video/bloc/video_event.dart';
@@ -12,6 +13,7 @@ class VideoBloc extends Bloc<VideoEvent, VideoState> {
     VideoPlayerController videoController;
     ChewieController chewieController;
     File? videoFile;
+    CameraController cameraController;
     on<UploadVideoEvent>((event, emit) async {
       emit(VideoLoadingState());
       FilePickerResult? result = await FilePicker.platform

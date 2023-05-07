@@ -55,10 +55,11 @@ class _VideoScreenState extends State<VideoScreen> {
         return Text(StringResources.NO_VIDEO_SELECTED);
       })),
       ElevatedButton(
-          onPressed: () {
-            BlocProvider.of<VideoBloc>(context).add(UploadVideoEvent());
-          },
-          child: Text(StringResources.LOAD_VIDEOS))
+              onPressed: () {
+                BlocProvider.of<VideoBloc>(context).add(UploadVideoEvent());
+              },
+              child: Text(StringResources.LOAD_VIDEOS))
+          .centerwidget,
     ]).centerwidget);
   }
 }

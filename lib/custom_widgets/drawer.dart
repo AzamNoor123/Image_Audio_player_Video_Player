@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:task_4_side_navigation_media_fetching/Bloc/ImageBloc/image_bloc_bloc.dart';
-import 'package:task_4_side_navigation_media_fetching/custom_widgets/DialogUtils.dart';
+import 'package:task_4_side_navigation_media_fetching/Bloc/Nvigator/bloc/navigator_bloc.dart';
 import 'package:task_4_side_navigation_media_fetching/helper/constat_resources.dart';
 import 'package:task_4_side_navigation_media_fetching/helper/context_extension.dart';
 import 'package:task_4_side_navigation_media_fetching/helper/dimension.dart';
@@ -42,27 +41,24 @@ class CustomDrawer extends StatelessWidget {
               ),
               ListTile(
                 onTap: () {
-                  Navigator.pushAndRemoveUntil(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => dialogUtils()),
-                      (Route<dynamic> route) => false);
+                  BlocProvider.of<NavigatorBloc>(context)
+                      .add(loadingImageNavigatorEvent());
                 },
                 leading: Icon(Icons.camera_alt_outlined),
                 title: Text(StringResources.IMAGES),
               ),
               ListTile(
                 onTap: () {
-                  BlocProvider.of<ImageBlocBloc>(context)
-                      .add(loadingMusicEvent());
+                  BlocProvider.of<NavigatorBloc>(context)
+                      .add(loadingMusicNavigatorEvent());
                 },
                 leading: Icon(Icons.audio_file_outlined),
                 title: Text(StringResources.AUDIO),
               ),
               ListTile(
                 onTap: () {
-                  BlocProvider.of<ImageBlocBloc>(context)
-                      .add(loadingVideoEvent());
+                  BlocProvider.of<NavigatorBloc>(context)
+                      .add(loadingVideoNavigatorEvent());
                 },
                 leading: Icon(Icons.video_collection_outlined),
                 title: Text(StringResources.VIDEOS),

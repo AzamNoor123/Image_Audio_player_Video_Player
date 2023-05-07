@@ -10,7 +10,3 @@ class ImageGetState extends ImageBlocState {
 
   ImageGetState(this.images);
 }
-
-class LoadingMusicState extends ImageBlocState {}
-
-class LoadingVideoState extends ImageBlocState {}
