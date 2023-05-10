@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_4_side_navigation_media_fetching/Bloc/Nvigator/bloc/navigator_bloc.dart';
 import 'package:task_4_side_navigation_media_fetching/Bloc/Video/bloc/video_bloc.dart';
-import 'package:task_4_side_navigation_media_fetching/Views/home.dart';
+import 'package:task_4_side_navigation_media_fetching/Views/HomeScreen.dart';
 import 'package:task_4_side_navigation_media_fetching/helper/string_resources.dart';
 
 import 'AudioBloc/bloc/music_bloc.dart';
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: HomeScreen()),
+          home: HomeScreens()),
     );
   }
 }

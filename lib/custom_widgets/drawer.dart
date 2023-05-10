@@ -11,7 +11,7 @@ class CustomDrawer extends StatelessWidget {
   CustomDrawer({
     super.key,
   });
-  final AdvancedDrawerController hello = AdvancedDrawerController();
+  AdvancedDrawerController controller = AdvancedDrawerController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -43,6 +43,7 @@ class CustomDrawer extends StatelessWidget {
                 onTap: () {
                   BlocProvider.of<NavigatorBloc>(context)
                       .add(loadingImageNavigatorEvent());
+                  controller.hideDrawer();
                 },
                 leading: Icon(Icons.camera_alt_outlined),
                 title: Text(StringResources.IMAGES),
@@ -51,6 +52,7 @@ class CustomDrawer extends StatelessWidget {
                 onTap: () {
                   BlocProvider.of<NavigatorBloc>(context)
                       .add(loadingMusicNavigatorEvent());
+                  Navigator.pop(context);
                 },
                 leading: Icon(Icons.audio_file_outlined),
                 title: Text(StringResources.AUDIO),
@@ -59,6 +61,7 @@ class CustomDrawer extends StatelessWidget {
                 onTap: () {
                   BlocProvider.of<NavigatorBloc>(context)
                       .add(loadingVideoNavigatorEvent());
+                  Navigator.pop(context);
                 },
                 leading: Icon(Icons.video_collection_outlined),
                 title: Text(StringResources.VIDEOS),
