@@ -4,8 +4,8 @@ import 'package:bloc/bloc.dart';
 import 'package:camera/camera.dart';
 import 'package:chewie/chewie.dart';
 import 'package:file_picker/file_picker.dart';
-import 'package:task_4_side_navigation_media_fetching/Bloc/Video/bloc/video_event.dart';
-import 'package:task_4_side_navigation_media_fetching/Bloc/Video/bloc/video_state.dart';
+import 'package:task_4_side_navigation_media_fetching/Video/bloc/video_event.dart';
+import 'package:task_4_side_navigation_media_fetching/Video/bloc/video_state.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoBloc extends Bloc<VideoEvent, VideoState> {

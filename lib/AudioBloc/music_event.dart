@@ -19,9 +19,6 @@ class SeekPositionChanged extends MusicEvent {
   final Duration seekPosition;
 
   SeekPositionChanged(this.seekPosition);
-
-  @override
-  List<Object> get props => [seekPosition];
 }
 
 class ApplySeekPosition extends MusicEvent {

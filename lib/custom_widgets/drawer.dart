@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_advanced_drawer/flutter_advanced_drawer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:task_4_side_navigation_media_fetching/Bloc/Nvigator/bloc/navigator_bloc.dart';
 import 'package:task_4_side_navigation_media_fetching/helper/constat_resources.dart';
-import 'package:task_4_side_navigation_media_fetching/helper/context_extension.dart';
+import 'package:task_4_side_navigation_media_fetching/helper/Extension_Pkg/context_extension.dart';
 import 'package:task_4_side_navigation_media_fetching/helper/dimension.dart';
 import 'package:task_4_side_navigation_media_fetching/helper/string_resources.dart';
+import '../Nvigator/bloc/navigator_bloc.dart';
 
 class CustomDrawer extends StatelessWidget {
   CustomDrawer({

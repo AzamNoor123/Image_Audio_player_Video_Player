@@ -1,11 +1,11 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:task_4_side_navigation_media_fetching/helper/constat_resources.dart';
 import 'package:task_4_side_navigation_media_fetching/helper/dimension.dart';
-import 'package:task_4_side_navigation_media_fetching/helper/widget_extension.dart';
-
-import '../Bloc/ImageBloc/image_bloc_bloc.dart';
+import 'package:task_4_side_navigation_media_fetching/helper/Extension_Pkg/widget_extension.dart';
+import 'package:task_4_side_navigation_media_fetching/helper/string_resources.dart';
+import '../ImageBloc/image_bloc_bloc.dart';
 
 class ImageScreen extends StatelessWidget {
   const ImageScreen({super.key});
@@ -31,7 +31,7 @@ class ImageScreen extends StatelessWidget {
                 );
               }
 
-              return Text('No Image is Picked')
+              return Text(StringResources.NO_VIDEO_SELECTED)
                   .padding(EdgeInsets.only(top: Dimension.D_100))
                   .centerwidget;
             },
@@ -45,14 +45,14 @@ class ImageScreen extends StatelessWidget {
                         .add(ImageFromCamera());
                   },
                   icon: Icon(Icons.camera_alt_outlined),
-                  label: Text('Camera')),
+                  label: Text(StringResources.CAMERA)),
               ElevatedButton.icon(
                   onPressed: () {
                     BlocProvider.of<ImageBlocBloc>(context)
                         .add(ImageFromGallery());
                   },
                   icon: Icon(Icons.filter),
-                  label: Text('Gallery'))
+                  label: Text(StringResources.GALLERY))
             ],
           ).padding()
         ],

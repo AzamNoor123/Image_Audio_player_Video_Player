@@ -13,8 +13,6 @@ class ImageBlocBloc extends Bloc<ImageBlocEvent, ImageBlocState> {
           await ImagePicker().pickImage(source: ImageSource.gallery);
       if (galleryimage != null) {
         emit(ImageGetState(galleryimage.path));
-        print('Gallery Image event file path is ${galleryimage.path}');
-        print('bloc portion state is $state');
       }
     });
     on<ImageFromCamera>((event, emit) async {
@@ -22,8 +20,6 @@ class ImageBlocBloc extends Bloc<ImageBlocEvent, ImageBlocState> {
           await ImagePicker().pickImage(source: ImageSource.camera);
       if (Cameraimage != null) {
         emit(ImageGetState(Cameraimage.path));
-
-        print('Camera Image event file path is ${Cameraimage.path}');
       }
     });
   }

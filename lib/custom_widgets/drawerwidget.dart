@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_4_side_navigation_media_fetching/helper/dimension.dart';
-
-import '../Bloc/Nvigator/bloc/navigator_bloc.dart';
+import '../Nvigator/bloc/navigator_bloc.dart';
 import '../helper/string_resources.dart';
 
 class DrawerWidget extends StatelessWidget {

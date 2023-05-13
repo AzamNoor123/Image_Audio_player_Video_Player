@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_4_side_navigation_media_fetching/Views/audio.dart';
 import 'package:task_4_side_navigation_media_fetching/Views/image.dart';
 import 'package:task_4_side_navigation_media_fetching/Views/video.dart';
-import 'package:task_4_side_navigation_media_fetching/helper/context_extension.dart';
+import 'package:task_4_side_navigation_media_fetching/helper/Extension_Pkg/context_extension.dart';
+import 'package:task_4_side_navigation_media_fetching/helper/constat_resources.dart';
 import 'package:task_4_side_navigation_media_fetching/helper/string_resources.dart';
-
-import '../Bloc/Nvigator/bloc/navigator_bloc.dart';
+import '../Nvigator/bloc/navigator_bloc.dart';
 import '../custom_widgets/drawerwidget.dart';
 import '../helper/dimension.dart';
 
@@ -37,7 +37,7 @@ class HomeScreens extends StatelessWidget {
               ),
               Text(StringResources.TITle_Description),
               Image.asset(
-                'assets/video.png',
+                ConstResource.HOME_iMAGE,
                 height: context.heightC * Dimension.D_0_5,
                 width: context.widthC * Dimension.D_0_5,
               )

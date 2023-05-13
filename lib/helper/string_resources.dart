@@ -8,4 +8,6 @@ class StringResources {
   static const VIDEOS = 'VIDEOS';
   static const AUDIO = 'AUDIOS';
   static const TERMS_POLICY = 'Terms of Service | Privacy Policy';
+  static const CAMERA = "CAMERA";
+  static const GALLERY = "GALLERY";
 }

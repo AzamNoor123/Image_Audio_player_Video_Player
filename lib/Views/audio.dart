@@ -5,9 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_4_side_navigation_media_fetching/helper/constat_resources.dart';
 import 'package:task_4_side_navigation_media_fetching/helper/dimension.dart';
 import 'package:task_4_side_navigation_media_fetching/helper/string_resources.dart';
-import 'package:task_4_side_navigation_media_fetching/helper/widget_extension.dart';
+import 'package:task_4_side_navigation_media_fetching/helper/Extension_Pkg/widget_extension.dart';
 
-import '../AudioBloc/bloc/music_bloc.dart';
+import '../AudioBloc/music_bloc.dart';
 
 class MusicPlayer extends StatefulWidget {
   const MusicPlayer({super.key});
@@ -28,7 +28,7 @@ class _MusicPlayerState extends State<MusicPlayer> {
             width: Dimension.D_300,
             decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/background.jpg"),
+                image: AssetImage(ConstResource.AUDIO_ASSET_IMAGE),
                 fit: BoxFit.cover,
               ),
             ),
@@ -44,7 +44,6 @@ class _MusicPlayerState extends State<MusicPlayer> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              //setting the music cover
               ClipRRect(
                 borderRadius: BorderRadius.circular(Dimension.D_30),
                 child: Image.asset(ConstResource.AUDIO_ASSET_IMAGE_2,
@@ -137,9 +136,7 @@ class _MusicPlayerState extends State<MusicPlayer> {
                           Icons.fast_rewind_rounded,
                           color: Colors.white,
                         ),
-                        onTapDown: (details) {
-                          //  player.setPlaybackRate(0.5);
-                        },
+                        onTapDown: (details) {},
                         onTapUp: (details) {}),
                   ),
                   BlocBuilder<MusicBloc, MusicState>(builder: (context, state) {

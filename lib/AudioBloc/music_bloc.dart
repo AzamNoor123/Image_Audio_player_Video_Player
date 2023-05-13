@@ -32,7 +32,6 @@ class MusicBloc extends Bloc<MusicEvent, MusicState> {
           emit(Musicerror(ConstResource.NO_AUDIO_SELECTED));
         }
       } catch (e) {
-        print(e);
         emit(Musicerror(ConstResource.ERROR_MSG));
       }
     });
