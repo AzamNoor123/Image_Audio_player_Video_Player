@@ -6,6 +6,7 @@ import 'package:task_4_side_navigation_media_fetching/helper/string_resources.da
 import 'AudioBloc/music_bloc.dart';
 import 'ImageBloc/image_bloc_bloc.dart';
 import 'Nvigator/bloc/navigator_bloc.dart';
+import 'videorecorder/video_recorder_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,6 +27,10 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(create: (context) => VideoBloc()),
         BlocProvider(create: (context) => NavigatorBloc()),
+        BlocProvider(
+          create: (context) => VideoRecorderBloc(),
+          child: Container(),
+        )
       ],
       child: MaterialApp(
           title: StringResources.TITle_Name,

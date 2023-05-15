@@ -10,4 +10,6 @@ class StringResources {
   static const TERMS_POLICY = 'Terms of Service | Privacy Policy';
   static const CAMERA = "CAMERA";
   static const GALLERY = "GALLERY";
+  static const STOP_BTN = 'Stop';
+  static const VIDEO_RECORD_BTN = 'Video Record';
 }

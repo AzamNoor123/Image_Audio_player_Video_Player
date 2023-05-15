@@ -2,9 +2,12 @@ import 'package:chewie/chewie.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_4_side_navigation_media_fetching/Video/bloc/video_event.dart';
+import 'package:task_4_side_navigation_media_fetching/Views/VideoRecorder.dart';
+import 'package:task_4_side_navigation_media_fetching/helper/constat_resources.dart';
 import 'package:task_4_side_navigation_media_fetching/helper/dimension.dart';
 import 'package:task_4_side_navigation_media_fetching/helper/string_resources.dart';
 import 'package:task_4_side_navigation_media_fetching/helper/Extension_Pkg/widget_extension.dart';
+import 'package:task_4_side_navigation_media_fetching/videorecorder/video_recorder_bloc.dart';
 import 'package:video_player/video_player.dart';
 
 import '../Video/bloc/video_bloc.dart';
@@ -45,7 +48,8 @@ class _VideoScreenState extends State<VideoScreen> {
           chewieController = state.chewieController;
           if (controller != null && chewieController != null) {
             return AspectRatio(
-              aspectRatio: controller?.value.aspectRatio ?? 16 / 19,
+              aspectRatio:
+                  controller?.value.aspectRatio ?? ConstResource.ASPECT_Ratio,
               child: Chewie(
                 controller: chewieController!,
               ),
@@ -60,6 +64,14 @@ class _VideoScreenState extends State<VideoScreen> {
               },
               child: Text(StringResources.LOAD_VIDEOS))
           .centerwidget,
+      ElevatedButton(
+          onPressed: () async {
+            BlocProvider.of<VideoRecorderBloc>(context)
+                .add(CameraInitilizeEvent());
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => VideoRecorder()));
+          },
+          child: Text(StringResources.VIDEO_RECORD_BTN))
     ]).centerwidget);
   }
 }
