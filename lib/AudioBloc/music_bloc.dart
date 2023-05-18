@@ -11,7 +11,7 @@ part 'music_state.dart';
 class MusicBloc extends Bloc<MusicEvent, MusicState> {
   final player = AudioPlayer();
   bool isplaying = false;
-  Duration? duration = Duration.zero;
+  Duration duration = Duration.zero;
   Duration position = Duration.zero;
 
   MusicBloc() : super(Musicloading()) {
@@ -23,11 +23,11 @@ class MusicBloc extends Bloc<MusicEvent, MusicState> {
         );
 
         if (result != null && result.files.isNotEmpty) {
-          String path = result.files.single.path!;
+          String path = result.files.single.path ?? '';
           await player.play(DeviceFileSource(path));
           await player.seek(position);
           final ss = player.getDuration();
-          emit(Musicplayed(duration!, position));
+          emit(Musicplayed(duration, position));
         } else {
           emit(Musicerror(ConstResource.NO_AUDIO_SELECTED));
         }
@@ -41,7 +41,7 @@ class MusicBloc extends Bloc<MusicEvent, MusicState> {
     });
     on<ResumeEvent>((event, emit) async {
       await player.resume();
-      emit(Musicplayed(duration!, position));
+      emit(Musicplayed(duration, position));
     });
     on<FastForwardEvent>((event, emit) {});
     on<SeekPositionChanged>((event, emit) {});
